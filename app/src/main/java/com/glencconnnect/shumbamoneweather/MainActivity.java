@@ -12,24 +12,34 @@ import android.view.MenuItem;
 
 import com.glencconnnect.shumbamoneweather.adapters.WeatherRecyclerAdapter;
 import com.glencconnnect.shumbamoneweather.ui.AboutActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private WeatherRecyclerAdapter adapter;
+    private FloatingActionButton fab;
+    public static String CHOICE_EXTRA = "CHOICE_EXTRA";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapter = new WeatherRecyclerAdapter(this);
+
         recyclerView = findViewById(R.id.recycler_view);
+        fab = findViewById(R.id.fab);
+
+        adapter = new WeatherRecyclerAdapter(this);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
+
+        fab.setOnClickListener(view->{
+            shareIntent();
+        });
 
     }
 
@@ -44,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id == R.id.action_about){
-            retrieveAbout();
+            retrieveInfo("action_about");
         }
         else if(id == R.id.action_credits){
-            shareIntent();
+            retrieveInfo("action_credits");
         }
         return super.onOptionsItemSelected(item);
     }
@@ -58,8 +68,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(Intent.createChooser(shareIntent,"Share App"));
     }
 
-    private void retrieveAbout(){
+    //retrieve information on about and credits, pass in the extras depending on the chosen option and dynamicaly populate that single activity with the right data
+    //simply reusing the same AboutActiivty for two different options
+    private void retrieveInfo(String choice_extra){
         Intent intent = new Intent(this, AboutActivity.class);
+        intent.putExtra(CHOICE_EXTRA,choice_extra);
         startActivity(intent);
     }
 }
