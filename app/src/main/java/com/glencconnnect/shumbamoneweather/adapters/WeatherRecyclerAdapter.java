@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.glencconnnect.shumbamoneweather.R;
 
-public class WeatherRecyclerAdapter extends RecyclerView.Adapter {
+public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.MyViewHolder> {
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //inflate the list_item layout for display using viewholder, attach to root is false coz when oncreateview is called,
         // the layout is attached to view automatically then, so no need to attach again
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,parent,false);
@@ -27,17 +27,24 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //bind the view elements , use holder to access the views and set their representational data from the data received from api
 
-        holder.set
+        holder.wCity.setText("Harare");
+        holder.wDate.setText("Tuesday 11/11/21");
+        holder.wWeather.setText("Partly Cloudy");
+        holder.wDegrees.setText("24 Degrees");
+
+        holder.itemView.setOnClickListener(view->{
+
+        });
     }
+
 
     @Override
     public int getItemCount() {
 
-        return 0;
+        return 2;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
