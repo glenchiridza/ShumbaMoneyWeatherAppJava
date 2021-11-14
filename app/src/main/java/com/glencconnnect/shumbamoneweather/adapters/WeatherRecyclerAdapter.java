@@ -4,6 +4,8 @@
 
 package com.glencconnnect.shumbamoneweather.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +14,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.glencconnnect.shumbamoneweather.DetailView;
 import com.glencconnnect.shumbamoneweather.R;
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.MyViewHolder> {
+
+    private Context context;
+    public WeatherRecyclerAdapter(Context context){
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -36,7 +44,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
         holder.wDegrees.setText("24 Degrees");
 
         holder.itemView.setOnClickListener(view->{
-
+            context.startActivity(new Intent(context, DetailView.class));
         });
     }
 
