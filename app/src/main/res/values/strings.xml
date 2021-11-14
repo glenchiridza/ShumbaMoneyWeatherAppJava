@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ShumbaMoneWeather</string>
+    <string name="weather_forecast">Weather Forecast</string>
 </resources>
