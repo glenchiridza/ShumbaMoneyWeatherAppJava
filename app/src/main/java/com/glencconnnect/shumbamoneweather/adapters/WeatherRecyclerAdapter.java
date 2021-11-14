@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.glencconnnect.shumbamoneweather.DetailView;
+import com.glencconnnect.shumbamoneweather.ui.DetailView;
 import com.glencconnnect.shumbamoneweather.R;
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.MyViewHolder> {
