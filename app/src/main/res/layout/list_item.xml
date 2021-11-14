@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="overcast clouds"
             app:layout_constraintBottom_toBottomOf="@+id/txt_degrees"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txt_date"
             app:layout_constraintTop_toTopOf="@+id/txt_degrees" />
 
         <TextView

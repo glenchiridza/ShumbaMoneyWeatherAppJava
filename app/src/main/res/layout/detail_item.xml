@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dv_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Tue, Nov 14"
+        android:textColor="@color/red_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/dv_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Harare, ZW"
+        android:textColor="@color/black"
+        android:textSize="@dimen/medium_text"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/dv_date"
+        app:layout_constraintStart_toStartOf="@+id/dv_date"
+        app:layout_constraintTop_toBottomOf="@+id/dv_date" />
+
+    <TextView
+        android:id="@+id/dv_degrees"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="11 Degrees"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/dv_location"
+        app:layout_constraintStart_toStartOf="@+id/dv_location"
+        app:layout_constraintTop_toBottomOf="@+id/dv_location" />
+
+    <TextView
+        android:id="@+id/dv_weather_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Feels like 10°C. Overcast clouds. Light air ew"
+        app:layout_constraintEnd_toEndOf="@+id/dv_degrees"
+        app:layout_constraintStart_toStartOf="@+id/dv_degrees"
+        app:layout_constraintTop_toBottomOf="@+id/dv_degrees" />
+
+    <TextView
+        android:id="@+id/dv_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Humidity: 83%"
+        app:layout_constraintEnd_toStartOf="@+id/dv_pressure"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dv_weather_detail" />
+
+    <TextView
+        android:id="@+id/dv_pressure"
+        android:layout_width="53dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="16dp"
+        android:text="1020hPa"
+        app:layout_constraintBottom_toBottomOf="@+id/dv_humidity"
+        app:layout_constraintEnd_toEndOf="@+id/dv_weather_detail"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/dv_humidity"
+        app:layout_constraintTop_toTopOf="@+id/dv_humidity" />
+
+    <TextView
+        android:id="@+id/dv_day_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Night"
+        app:layout_constraintEnd_toEndOf="@+id/dv_weather_detail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dv_weather_detail"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/dv_weather_detail"
+        app:layout_constraintStart_toStartOf="@+id/dv_weather_detail"
+        app:layout_constraintTop_toBottomOf="@+id/dv_humidity"
+        app:srcCompat="@drawable/sun" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,8 +16,10 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         ///handler to simulate delay and switch from splashscreen into MainActivity
-        handler.postDelayed(() ->
-                startActivity(new Intent(SplashScreenActivity.this,MainActivity.class)
-                ),3000);
+
+        handler.postDelayed(() -> {
+            startActivity(new Intent(SplashScreenActivity.this,MainActivity.class));
+            finish();
+        },3000);
     }
 }

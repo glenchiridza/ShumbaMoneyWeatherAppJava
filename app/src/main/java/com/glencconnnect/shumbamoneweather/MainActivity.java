@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        adapter = new WeatherRecyclerAdapter();
+        adapter = new WeatherRecyclerAdapter(this);
         recyclerView = findViewById(R.id.recycler_view);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);

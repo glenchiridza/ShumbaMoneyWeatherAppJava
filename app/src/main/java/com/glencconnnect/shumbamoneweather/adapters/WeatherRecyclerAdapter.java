@@ -52,7 +52,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     @Override
     public int getItemCount() {
 
-        return 2;
+        return 15;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
