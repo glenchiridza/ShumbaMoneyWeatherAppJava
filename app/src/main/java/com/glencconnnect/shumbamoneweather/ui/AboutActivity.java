@@ -42,7 +42,6 @@ public class AboutActivity extends AppCompatActivity {
                 textTitle.setText(getString(R.string.andro_version));
                 textDescription.setText(getString(R.string.developer_info));
                 break;
-            default:{}
         }
     }
 }
