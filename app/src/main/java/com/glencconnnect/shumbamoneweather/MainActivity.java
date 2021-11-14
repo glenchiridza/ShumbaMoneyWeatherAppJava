@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.glencconnnect.shumbamoneweather.adapters.WeatherRecyclerAdapter;
+import com.glencconnnect.shumbamoneweather.ui.AboutActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if(id == R.id.action_about){
-
+            retrieveAbout();
         }
         else if(id == R.id.action_credits){
-
+            shareIntent();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -55,5 +56,10 @@ public class MainActivity extends AppCompatActivity {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         startActivity(Intent.createChooser(shareIntent,"Share App"));
+    }
+
+    private void retrieveAbout(){
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
     }
 }

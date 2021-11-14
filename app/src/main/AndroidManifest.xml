@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShumbaMoneWeather">
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".ui.AboutActivity"></activity>
         <activity android:name=".ui.DetailView" />
         <activity
             android:name=".SplashScreenActivity"
