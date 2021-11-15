@@ -15,7 +15,7 @@ public class ServiceBuilder {
     // the convertor factor resposnible for transforming the json data into its java object equivalence
 
     private static Retrofit.Builder retrofit = new Retrofit.Builder()
-            .baseUrl()
+            .baseUrl("https://openweathermap.org")
             .addConverterFactory(GsonConverterFactory.create());
 
     //call build on the retrofit instance when done with the preceding functionality
