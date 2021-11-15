@@ -65,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
     private void shareIntent(){
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
-        startActivity(Intent.createChooser(shareIntent,"Share App"));
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT,getString(R.string.extra_share_app_text));
+        startActivity(Intent.createChooser(shareIntent,"Share With"));
     }
 
     //retrieve information on about and credits, pass in the extras depending on the chosen option and dynamicaly populate that single activity with the right data
