@@ -6,6 +6,8 @@ package com.glencconnnect.shumbamoneweather.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class List {
 
     @SerializedName("dt")
@@ -17,16 +19,28 @@ public class List {
     @SerializedName("sunset")
     private Long sunset;
 
-    //the temperature is an object inside the List, so it will appear in here
+    //the temperature is an object inside the List, so it will appear in here, which in itself contains a list of items
     @SerializedName("temp")
-    private Temp temp;
+    private ArrayList<Temp> temp;
 
+    @SerializedName("pressure")
+    private double pressure;
 
-    public List(Long dt, Long sunrise, Long sunset, Temp temp) {
+    @SerializedName("humidity")
+    private int humidity;
+
+    //the Weather is an object inside the List, so it will appear in here, which in itself contains a list of items
+    @SerializedName("weather")
+    private ArrayList<Weather> weather;
+
+    public List(Long dt, Long sunrise, Long sunset, ArrayList<Temp> temp, double pressure, int humidity, ArrayList<Weather> weather) {
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
         this.temp = temp;
+        this.pressure = pressure;
+        this.humidity = humidity;
+        this.weather = weather;
     }
 
     public Long getDt() {
@@ -53,22 +67,36 @@ public class List {
         this.sunset = sunset;
     }
 
-    public Temp getTemp() {
+    public ArrayList<Temp> getTemp() {
         return temp;
     }
 
-    public void setTemp(Temp temp) {
+    public void setTemp(ArrayList<Temp> temp) {
         this.temp = temp;
     }
 
-    @Override
-    public String toString() {
-        return "List{" +
-                "dt=" + dt +
-                ", sunrise=" + sunrise +
-                ", sunset=" + sunset +
-                ", temp=" + temp +
-                '}';
+    public double getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(double pressure) {
+        this.pressure = pressure;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public ArrayList<Weather> getWeather() {
+        return weather;
+    }
+
+    public void setWeather(ArrayList<Weather> weather) {
+        this.weather = weather;
     }
 }
 
