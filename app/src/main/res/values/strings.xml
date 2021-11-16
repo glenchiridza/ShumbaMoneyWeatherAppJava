@@ -12,4 +12,5 @@
     <string name="feels_like"> Feels like </string>
     <string name="hot">HOT</string>
     <string name="cold">COLD</string>
+    <string name="error_message">We encountered a problem while retrieving data, please make sure you are connected to the internet in order to get results</string>
 </resources>
