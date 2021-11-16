@@ -4,9 +4,14 @@
 
 package com.glencconnnect.shumbamoneweather.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class City {
 
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("country")
     private String country;
 
     public City(String name, String country) {
