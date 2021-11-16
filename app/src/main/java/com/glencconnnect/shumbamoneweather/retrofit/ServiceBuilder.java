@@ -7,6 +7,8 @@ package com.glencconnnect.shumbamoneweather.retrofit;
 //using retrofit libray to grab api data serialize the model class that will be assigned the retrieved data
 //gonna pass the Class type in (s) required to the buildService function, its a generic function
 
+import com.glencconnnect.shumbamoneweather.constants.ApiConstants;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -15,7 +17,7 @@ public class ServiceBuilder {
     // the convertor factor resposnible for transforming the json data into its java object equivalence
 
     private static Retrofit.Builder retrofit = new Retrofit.Builder()
-            .baseUrl("https://openweathermap.org")
+            .baseUrl(ApiConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create());
 
     //call build on the retrofit instance when done with the preceding functionality

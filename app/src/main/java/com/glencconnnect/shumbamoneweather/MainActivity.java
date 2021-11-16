@@ -9,10 +9,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.glencconnnect.shumbamoneweather.adapters.WeatherRecyclerAdapter;
+import com.glencconnnect.shumbamoneweather.models.OuterContainer;
+import com.glencconnnect.shumbamoneweather.retrofit.RetrieveWeather;
+import com.glencconnnect.shumbamoneweather.retrofit.ServiceBuilder;
 import com.glencconnnect.shumbamoneweather.ui.AboutActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     public static String CHOICE_EXTRA = "CHOICE_EXTRA";
 
+    private TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.recycler_view);
+        textView = findViewById(R.id.myview);
+
         fab = findViewById(R.id.fab);
 
         adapter = new WeatherRecyclerAdapter(this);
@@ -41,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
             shareIntent();
         });
 
+
+        RetrieveWeather retrieveWeather = ServiceBuilder.builderService(RetrieveWeather.class);
+        Call<OuterContainer> call = retrieveWeather.getData();
+
+        call.enqueue(new Callback<OuterContainer>() {
+            @Override
+            public void onResponse(Call<OuterContainer> call, Response<OuterContainer> response) {
+
+                textView.setText(response.body().toString());
+            }
+
+            @Override
+            public void onFailure(Call<OuterContainer> call, Throwable t) {
+textView.setText(t.getMessage()+"-----"+t.getCause());
+                Toast.makeText(MainActivity.this, t.getMessage()+"-----"+t.getCause(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

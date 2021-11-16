@@ -25,4 +25,10 @@
         app:srcCompat="@drawable/ic_baseline_share_24"
         android:contentDescription="@string/share" />
 
+    <TextView
+        android:id="@+id/myview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="TextView" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
