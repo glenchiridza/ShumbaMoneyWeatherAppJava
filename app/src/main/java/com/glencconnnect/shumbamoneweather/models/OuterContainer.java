@@ -21,11 +21,16 @@ public class OuterContainer {
     @SerializedName("city")
     private City city;
 
-    public OuterContainer(String cod, String message, String cnt, City city) {
+   @SerializedName("list")
+    private List list;
+
+
+    public OuterContainer(String cod, String message, String cnt, City city, List list) {
         this.cod = cod;
         this.message = message;
         this.cnt = cnt;
         this.city = city;
+        this.list = list;
     }
 
     public String getCod() {
@@ -60,13 +65,11 @@ public class OuterContainer {
         this.city = city;
     }
 
-    @Override
-    public String toString() {
-        return "OuterContainer{" +
-                "cod='" + cod + '\'' +
-                ", message='" + message + '\'' +
-                ", cnt='" + cnt + '\'' +
-                ", city=" + city +
-                '}';
+    public List getList() {
+        return list;
+    }
+
+    public void setList(List list) {
+        this.list = list;
     }
 }
