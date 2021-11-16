@@ -12,6 +12,6 @@ import static com.glencconnnect.shumbamoneweather.constants.ApiConstants.API_KEY
 
 public interface RetrieveWeather {
 
-    @GET("/data/2.5/forecast?q=Harare&cnt=16&appid="+ API_KEY)
+    @GET("/data/2.5/forecast?q=Harare&&units=metric&cnt=16&appid="+ API_KEY)
     Call<OuterContainer> getData();
 }

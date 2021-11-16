@@ -14,14 +14,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.glencconnnect.shumbamoneweather.models.OuterContainer;
 import com.glencconnnect.shumbamoneweather.ui.DetailView;
 import com.glencconnnect.shumbamoneweather.R;
+
+import java.util.List;
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.MyViewHolder> {
 
     private Context context;
-    public WeatherRecyclerAdapter(Context context){
+    private List<OuterContainer> weatherList;
+
+    public WeatherRecyclerAdapter(Context context, List<OuterContainer> weatherList) {
         this.context = context;
+        this.weatherList = weatherList;
+    }
+
+    public void setDataListing(List<OuterContainer> weatherList){
+        this.weatherList = weatherList;
+        notifyDataSetChanged();
     }
 
     @NonNull

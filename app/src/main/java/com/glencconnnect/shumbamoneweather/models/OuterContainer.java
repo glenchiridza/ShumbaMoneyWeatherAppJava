@@ -6,6 +6,8 @@ package com.glencconnnect.shumbamoneweather.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class OuterContainer {
 
     @SerializedName("cod")
@@ -22,16 +24,7 @@ public class OuterContainer {
     private City city;
 
    @SerializedName("list")
-    private List list;
-
-
-    public OuterContainer(String cod, String message, String cnt, City city, List list) {
-        this.cod = cod;
-        this.message = message;
-        this.cnt = cnt;
-        this.city = city;
-        this.list = list;
-    }
+    private ArrayList<List> list;
 
     public String getCod() {
         return cod;
@@ -65,11 +58,22 @@ public class OuterContainer {
         this.city = city;
     }
 
-    public List getList() {
+    public ArrayList<List> getList() {
         return list;
     }
 
-    public void setList(List list) {
+    public void setList(ArrayList<List> list) {
         this.list = list;
+    }
+
+    @Override
+    public String toString() {
+        return "OuterContainer{" +
+                "cod='" + cod + '\'' +
+                ", message='" + message + '\'' +
+                ", cnt='" + cnt + '\'' +
+                ", city=" + city +
+                ", list=" + list +
+                '}';
     }
 }

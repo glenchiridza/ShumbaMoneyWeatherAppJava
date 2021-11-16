@@ -20,27 +20,23 @@ public class List {
     private Long sunset;
 
     //the temperature is an object inside the List, so it will appear in here, which in itself contains a list of items
-    @SerializedName("temp")
-    private ArrayList<Temp> temp;
-
-    @SerializedName("pressure")
-    private double pressure;
-
-    @SerializedName("humidity")
-    private int humidity;
+    @SerializedName("main")
+    private Main main;
 
     //the Weather is an object inside the List, so it will appear in here, which in itself contains a list of items
     @SerializedName("weather")
     private ArrayList<Weather> weather;
 
-    public List(Long dt, Long sunrise, Long sunset, ArrayList<Temp> temp, double pressure, int humidity, ArrayList<Weather> weather) {
+    @SerializedName("dt_txt")
+    private String dt_txt;
+
+    public List(Long dt, Long sunrise, Long sunset, Main main, ArrayList<Weather> weather, String dt_txt) {
         this.dt = dt;
         this.sunrise = sunrise;
         this.sunset = sunset;
-        this.temp = temp;
-        this.pressure = pressure;
-        this.humidity = humidity;
+        this.main = main;
         this.weather = weather;
+        this.dt_txt = dt_txt;
     }
 
     public Long getDt() {
@@ -67,28 +63,12 @@ public class List {
         this.sunset = sunset;
     }
 
-    public ArrayList<Temp> getTemp() {
-        return temp;
+    public Main getMain() {
+        return main;
     }
 
-    public void setTemp(ArrayList<Temp> temp) {
-        this.temp = temp;
-    }
-
-    public double getPressure() {
-        return pressure;
-    }
-
-    public void setPressure(double pressure) {
-        this.pressure = pressure;
-    }
-
-    public int getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(int humidity) {
-        this.humidity = humidity;
+    public void setMain(Main main) {
+        this.main = main;
     }
 
     public ArrayList<Weather> getWeather() {
@@ -97,6 +77,26 @@ public class List {
 
     public void setWeather(ArrayList<Weather> weather) {
         this.weather = weather;
+    }
+
+    public String getDt_txt() {
+        return dt_txt;
+    }
+
+    public void setDt_txt(String dt_txt) {
+        this.dt_txt = dt_txt;
+    }
+
+    @Override
+    public String toString() {
+        return "List{" +
+                "dt=" + dt +
+                ", sunrise=" + sunrise +
+                ", sunset=" + sunset +
+                ", main=" + main +
+                ", weather=" + weather +
+                ", dt_txt='" + dt_txt + '\'' +
+                '}';
     }
 }
 
