@@ -8,6 +8,8 @@ public class ApiConstants {
     public static final String BASE_URL =  "https://api.openweathermap.org";
 
     public static final String API_KEY = "034da672af3e87a27b2bfb04a03baaa1";
+
+    public static final String ICON_URL = "https://api.openweathermap.org/img/w/";
 }
 
 //http://api.openweathermap.org/data/2.5/weather?q=Harare&cnt=16&APPID=034da672af3e87a27b2bfb04a03baaa1

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.glencconnnect.shumbamoneweather.constants.ApiConstants;
 import com.glencconnnect.shumbamoneweather.models.OuterContainer;
 import com.glencconnnect.shumbamoneweather.models.Weather;
 import com.glencconnnect.shumbamoneweather.ui.DetailView;
@@ -70,7 +71,8 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
         //get the weather list
         ArrayList<Weather>  weather = weatherList.get(position).getWeather();
         String weatherDescription = weather.get(0).getDescription();
-        String icon = weather.get(0).getIcon()+".png";
+        //get icon, add url string first then the image name retrieved from json response
+        String icon = ApiConstants.ICON_URL+weather.get(0).getIcon()+".png";
 
         String humidity = String.valueOf(weatherList.get(position).getMain().getHumidity());
         String pressure = String.valueOf(weatherList.get(position).getMain().getPressure());
@@ -79,6 +81,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
         holder.wDate.setText(date);
         holder.wWeather.setText(weatherDescription);
         holder.wDegrees.setText(deg_sb);
+
 
         //pass the content to the intent being started
         ArrayList<String> weatherData = new ArrayList<>();

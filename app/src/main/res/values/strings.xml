@@ -9,7 +9,7 @@
     <string name="share">Share</string>
     <string name="andro_version">SMW Version 1.0</string>
     <string name="extra_share_app_text">hi, we are Shumba Money, try this new weather app \n download on playstore \n or visit www.shumbamoney.com</string>
-    <string name="feels_like">Feels like</string>
+    <string name="feels_like"> Feels like </string>
     <string name="hot">HOT</string>
     <string name="cold">COLD</string>
 </resources>
