@@ -7,17 +7,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.glencconnnect.shumbamoneweather.adapters.WeatherRecyclerAdapter;
+import com.glencconnnect.shumbamoneweather.models.City;
+import com.glencconnnect.shumbamoneweather.models.List;
 import com.glencconnnect.shumbamoneweather.models.OuterContainer;
+import com.glencconnnect.shumbamoneweather.models.Weather;
 import com.glencconnnect.shumbamoneweather.retrofit.RetrieveWeather;
 import com.glencconnnect.shumbamoneweather.retrofit.ServiceBuilder;
 import com.glencconnnect.shumbamoneweather.ui.AboutActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     public static String CHOICE_EXTRA = "CHOICE_EXTRA";
 
+    private ArrayList<List> weatherList;
     private TextView textView;
 
     @Override
@@ -44,7 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         fab = findViewById(R.id.fab);
 
-        adapter = new WeatherRecyclerAdapter(this);
+
+        weatherList = new ArrayList<>();
+
+        adapter = new WeatherRecyclerAdapter(this,weatherList);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
@@ -63,7 +74,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<OuterContainer> call, Response<OuterContainer> response) {
 
-                textView.setText(response.body().toString());
+                if(response.isSuccessful()){
+                    OuterContainer listing = response.body();
+
+                    ArrayList<com.glencconnnect.shumbamoneweather.models.List> list = listing.getList();
+                    weatherList = list;
+
+
+
+                    //textView.setText(weatherList.toString());
+                    adapter.setDataListing(weatherList);
+                }
             }
 
             @Override
@@ -108,4 +129,5 @@ textView.setText(t.getMessage()+"-----"+t.getCause());
         intent.putExtra(CHOICE_EXTRA,choice_extra);
         startActivity(intent);
     }
+
 }

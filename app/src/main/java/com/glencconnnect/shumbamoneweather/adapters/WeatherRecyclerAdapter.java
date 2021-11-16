@@ -15,22 +15,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.glencconnnect.shumbamoneweather.models.OuterContainer;
+import com.glencconnnect.shumbamoneweather.models.Weather;
 import com.glencconnnect.shumbamoneweather.ui.DetailView;
 import com.glencconnnect.shumbamoneweather.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecyclerAdapter.MyViewHolder> {
 
+    public static final String WEATHER_DATA = "WEATHER_DATA";
     private Context context;
-    private List<OuterContainer> weatherList;
+    private ArrayList<com.glencconnnect.shumbamoneweather.models.List> weatherList;
 
-    public WeatherRecyclerAdapter(Context context, List<OuterContainer> weatherList) {
+    public WeatherRecyclerAdapter(Context context, ArrayList<com.glencconnnect.shumbamoneweather.models.List> weatherList) {
         this.context = context;
         this.weatherList = weatherList;
     }
 
-    public void setDataListing(List<OuterContainer> weatherList){
+    public void setDataListing(ArrayList<com.glencconnnect.shumbamoneweather.models.List> weatherList){
         this.weatherList = weatherList;
         notifyDataSetChanged();
     }
@@ -49,13 +52,47 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         //bind the view elements , use holder to access the views and set their representational data from the data received from api
 
-        holder.wCity.setText("Harare");
-        holder.wDate.setText("Tuesday 11/11/21");
-        holder.wWeather.setText("Partly Cloudy");
-        holder.wDegrees.setText("24 Degrees");
+//
+//        bannerImage.setImageResource(R.drawable.top_learner);
+//        Picasso.get().load(learnersList.get(position).getImage()).into(bannerImage);
+//        full_name.setText(learnersList.get(position).getName());
+//
+        String city = "Harare";
+        StringBuilder deg_sb = new StringBuilder();
+
+
+
+        String date = weatherList.get(position).getDt_txt();
+    //    String weatherDescription = weatherList.get(0).getWeather().get(position).getDescription();
+        String degrees  = String.valueOf(weatherList.get(position).getMain().getTemp());
+        deg_sb.append(degrees).append('\u00B0').append(" C");
+
+        //get the weather list
+        ArrayList<Weather>  weather = weatherList.get(position).getWeather();
+        String weatherDescription = weather.get(0).getDescription();
+        String icon = weather.get(0).getIcon()+".png";
+
+        String humidity = String.valueOf(weatherList.get(position).getMain().getHumidity());
+        String pressure = String.valueOf(weatherList.get(position).getMain().getPressure());
+
+        holder.wCity.setText(city);
+        holder.wDate.setText(date);
+        holder.wWeather.setText(weatherDescription);
+        holder.wDegrees.setText(deg_sb);
+
+        //pass the content to the intent being started
+        ArrayList<String> weatherData = new ArrayList<>();
+        weatherData.add(0,date);
+        weatherData.add(1,degrees);
+        weatherData.add(2,weatherDescription);
+        weatherData.add(3,humidity);
+        weatherData.add(4,pressure);
+        weatherData.add(5,icon);
 
         holder.itemView.setOnClickListener(view->{
-            context.startActivity(new Intent(context, DetailView.class));
+            Intent detailIntent = new Intent(context,DetailView.class);
+            detailIntent.putExtra(WEATHER_DATA,weatherData);
+            context.startActivity(detailIntent);
         });
     }
 
@@ -63,7 +100,7 @@ public class WeatherRecyclerAdapter extends RecyclerView.Adapter<WeatherRecycler
     @Override
     public int getItemCount() {
 
-        return 15;
+        return weatherList ==null ? 0 : weatherList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
