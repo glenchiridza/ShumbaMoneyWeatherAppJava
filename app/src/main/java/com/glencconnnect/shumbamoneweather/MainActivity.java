@@ -80,12 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
         //click fab to refresh, to try retrieve again if failed on oncreate first view
         fabRefresh.setOnClickListener(view ->{
+            progressBar.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
             retrieveWeatherData();
         });
 
     }
 
-    private void retrieveWeatherData() {
+    protected void retrieveWeatherData() {
         RetrieveWeather retrieveWeather = ServiceBuilder.builderService(RetrieveWeather.class);
         Call<OuterContainer> call = retrieveWeather.getData();
 

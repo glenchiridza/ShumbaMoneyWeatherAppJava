@@ -30,6 +30,10 @@ public class OuterContainer {
         this.list = list;
     }
 
+    public OuterContainer() {
+
+    }
+
     public ArrayList<List> getList() {
         return list;
     }
